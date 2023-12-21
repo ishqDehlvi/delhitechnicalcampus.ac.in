@@ -1,20 +1,20 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import { useRouter } from "next/navigation"
-import { DialogProps } from "@radix-ui/react-alert-dialog"
+import * as React from "react";
+import { useRouter } from "next/navigation";
+import { DialogProps } from "@radix-ui/react-alert-dialog";
 import {
   CircleIcon,
   FileIcon,
   LaptopIcon,
   MoonIcon,
   SunIcon,
-} from "@radix-ui/react-icons"
-import { useTheme } from "next-themes"
+} from "@radix-ui/react-icons";
+import { useTheme } from "next-themes";
 
-import { docsConfig } from "@/config/docs"
-import { cn } from "@/lib/utils"
-import { Button } from "@/components/ui/button"
+import { docsConfig } from "@/config/docs";
+import { cn } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
 import {
   CommandDialog,
   CommandEmpty,
@@ -23,29 +23,34 @@ import {
   CommandItem,
   CommandList,
   CommandSeparator,
-} from "@/components/ui/command"
+} from "@/components/ui/command";
+
+interface NavItem {
+  href: string;
+  title: string;
+}
 
 export function CommandMenu({ ...props }: DialogProps) {
-  const router = useRouter()
-  const [open, setOpen] = React.useState(false)
-  const { setTheme } = useTheme()
+  const router = useRouter();
+  const [open, setOpen] = React.useState(false);
+  const { setTheme } = useTheme();
 
   React.useEffect(() => {
     const down = (e: KeyboardEvent) => {
       if (e.key === "k" && (e.metaKey || e.ctrlKey)) {
-        e.preventDefault()
-        setOpen((open) => !open)
+        e.preventDefault();
+        setOpen((open) => !open);
       }
-    }
+    };
 
-    document.addEventListener("keydown", down)
-    return () => document.removeEventListener("keydown", down)
-  }, [])
+    document.addEventListener("keydown", down);
+    return () => document.removeEventListener("keydown", down);
+  }, []);
 
   const runCommand = React.useCallback((command: () => unknown) => {
-    setOpen(false)
-    command()
-  }, [])
+    setOpen(false);
+    command();
+  }, []);
 
   return (
     <>
@@ -75,7 +80,7 @@ export function CommandMenu({ ...props }: DialogProps) {
                   key={navItem.href}
                   value={navItem.title}
                   onSelect={() => {
-                    runCommand(() => router.push(navItem.href as string))
+                    runCommand(() => router.push(navItem.href as string));
                   }}
                 >
                   <FileIcon className="mr-2 h-4 w-4" />
@@ -85,12 +90,12 @@ export function CommandMenu({ ...props }: DialogProps) {
           </CommandGroup>
           {docsConfig.sidebarNav.map((group) => (
             <CommandGroup key={group.title} heading={group.title}>
-              {group.items.map((navItem) => (
+              {group.items.map((navItem: NavItem) => (
                 <CommandItem
                   key={navItem.href}
                   value={navItem.title}
                   onSelect={() => {
-                    runCommand(() => router.push(navItem.href as string))
+                    runCommand(() => router.push(navItem.href));
                   }}
                 >
                   <div className="mr-2 flex h-4 w-4 items-center justify-center">
@@ -119,5 +124,5 @@ export function CommandMenu({ ...props }: DialogProps) {
         </CommandList>
       </CommandDialog>
     </>
-  )
+  );
 }
