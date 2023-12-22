@@ -16,7 +16,7 @@ bun dev
 
 
 ### First Basic Task
-- [ ] Create a project structure for the NextJs and tailwind
+- [x] Create a project structure for the NextJs and tailwind
 - [ ] Create a basic Header and Footer component
 - [ ] Create the hero section first
 - [ ] Add all the appropriate links
