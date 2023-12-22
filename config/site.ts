@@ -1,13 +1,30 @@
+export type SiteConfig = typeof siteConfig
+
 export const siteConfig = {
-  name: "Delhi Technical Campus",
-  url: "https://inzi.me",
-  ogImage: "https://ui.shadcn.com/og.jpg",
+  name: "DelhiTechnicalCampus",
   description:
-    "created for delhi technical campus, a college in greater noida, uttar pradesh, india.",
+    "Unofficial Website for All the trending updates of Delhi Technical Campus",
+  mainNav: [
+    {
+      title: "Home",
+      href: "/",
+    },
+    {
+      title: "Courses",
+      href: "/",
+    },
+    {
+      title: "Societies",
+      href: "/",
+    },
+    {
+      title: "Blog & news",
+      href: "/",
+    },
+  ],
   links: {
     twitter: "https://twitter.com/c0nd0r1n3e94",
-    github: "https://github.com/ishqDehlvi",
+    github: "https://github.com/ishqdehlvi",
+    docs: "https://inzi.me",
   },
 }
-
-export type SiteConfig = typeof siteConfig
