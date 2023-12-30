@@ -8,6 +8,7 @@ import { SiteHeader } from "@/components/site-header"
 import Footer from "@/components/footer"
 import { TailwindIndicator } from "@/components/tailwind-indicator"
 import { ThemeProvider } from "@/components/theme-provider"
+import { Hero } from "@/components/hero"
 
 export const metadata: Metadata = {
   title: {
